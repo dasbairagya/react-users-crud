@@ -3,7 +3,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
+    "json-server": "json-server --watch db.json --port 3003",
+    "start:dev": "concurrently \"npm start\" \"npm run json-server\"",
 In the project directory, you can run:
 
 ### `npm start`
@@ -13,6 +14,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+### `npm run start:dev`
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3003](http://localhost:3003/users) to view json server in your browser.
 
 ### `npm test`
 
