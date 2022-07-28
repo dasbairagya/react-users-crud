@@ -31,6 +31,7 @@ export const AddUser = () => {
         <h2 className="text-center mb-4">Add A User</h2>
         <form onSubmit={e => onSubmit(e)}>
           <div className="form-group">
+             <label for="staticEmail" class="col-sm-2 col-form-label">Full Name</label>
             <input
               type="text"
               className="form-control form-control-lg"
@@ -41,6 +42,7 @@ export const AddUser = () => {
             />
           </div>
           <div className="form-group">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
             <input
               type="text"
               className="form-control form-control-lg"
@@ -51,6 +53,7 @@ export const AddUser = () => {
             />
           </div>
           <div className="form-group">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
             <input
               type="email"
               className="form-control form-control-lg"
@@ -61,6 +64,7 @@ export const AddUser = () => {
             />
           </div>
           <div className="form-group">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Phone</label>
             <input
               type="text"
               className="form-control form-control-lg"
@@ -71,6 +75,7 @@ export const AddUser = () => {
             />
           </div>
           <div className="form-group">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Website</label>
             <input
               type="text"
               className="form-control form-control-lg"
@@ -80,7 +85,9 @@ export const AddUser = () => {
               onChange={e => onInputChange(e)}
             />
           </div>
-          <button type="submit" className="btn btn-primary btn-block">Add User</button>
+          <div className="form-group">
+          <button type="submit" className="btn btn-primary btn-block mt-5">Add User</button>
+          </div>
         </form>
       </div>
     </div>

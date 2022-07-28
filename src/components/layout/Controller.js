@@ -4,10 +4,13 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Blog from '../pages/Blog';
 import Contact from '../pages/Contact';
+import List from '../pages/List';
 import { AddUser } from '../users/AddUser';
 import { EditUser } from '../users/EditUser';
 import  Users  from '../users/Users';
 import Nopage from '../pages/Nopage';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 const Controller = () => {
   return (
@@ -16,10 +19,13 @@ const Controller = () => {
       <Route exact path='/blog' element={<Blog />} />
       <Route exact path='/about' element={<About />} />
       <Route exact path='/contact' element={<Contact />} />
+      <Route exact path='/list' element={<List />} />
       <Route exact path="/users/add" element={<AddUser />} />
       <Route exact path="/users/edit/:id" element={<EditUser />} />
       <Route exact path="/users/:id" element={<Users />} />
       <Route exact path='*' element={<Nopage />} /> 
+      <Route exact path="/register" element={<Register />} />
+      <Route exact path="/login" element={<Login />} />
     </Routes>
   );
 }
