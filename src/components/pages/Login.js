@@ -1,33 +1,35 @@
 import React , { useState } from 'react';
-import axios from 'axios'
+// import axios from 'axios'
 import { NavLink, useNavigate } from "react-router-dom";
-
+import axios from '../../api/axios';
+const LOGIN_URL = '/users';
 
 const Login = () => {
 
   let history = useNavigate();
-  const [authUser, setUser] = useState({
+  const [authUser, setauthUser] = useState({
     username: "",
     password: ""
   });
   const {username, password } = authUser; //destractor  
   const onInputChange = e => {
-    setUser({ ...authUser, [e.target.name]: e.target.value }); //to keep the state of the form use ...user to have the other fileds values
+    setauthUser({ ...authUser, [e.target.name]: e.target.value }); //to keep the state of the form use ...user to have the other fileds values
   console.log(authUser);
   };
 
   const onSubmit = async e => {
     e.preventDefault();
-    
+
     if(authUser.username.length < 1 || authUser.password.length < 1){
       alert("Please fill all the fields");
     }else{
   
-      const allUser = await axios.get('http://localhost:3003/users', authUser);
+      const allUser = await axios.get(LOGIN_URL); //get all users from the server i.e. http://localhost:3003/users
       const loginUser = allUser.data.find(user => user.username === authUser.username && user.password === authUser.password);
 
       if(loginUser){
         console.log('logged in');
+        localStorage.setItem('user', JSON.stringify(loginUser));
         history("/");
       }else{
         alert("Invalid username or password");
@@ -72,7 +74,6 @@ const Login = () => {
                 type="text"
                 className="form-control"
                 name="username"
-                defaultValue=""
                 placeholder="email"
                 value={username}
                 onChange={e => onInputChange(e)}

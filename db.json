@@ -123,5 +123,61 @@
       "id": 9,
       "password": "test"
     }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": 4,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": 5,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": 6,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": 7,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": 8,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": 9,
+      "name": "Dr. John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com"
+    }
   ]
 }

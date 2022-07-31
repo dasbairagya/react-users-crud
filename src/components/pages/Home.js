@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
-import axios from 'axios';
+// import axios from 'axios';
+import axios from '../../api/axios';
 
 export const Home = () => {
 
@@ -17,7 +18,8 @@ export const Home = () => {
 
   //https://typeofnan.dev/fix-cannot-read-property-map-of-undefined-error-in-react/
   const loadUsers = async () => {
-    await axios.get('http://localhost:3003/users')
+    // await axios.get('http://localhost:3003/users')
+    await axios.get('/users') //this is the same as the line above
     .then((users) => {
       // console.log(users.data);
       setUser(users.data.reverse());
@@ -42,7 +44,7 @@ export const Home = () => {
   const deleteUser = async id => {
     alert(id);
 
-    await axios.delete("http://localhost:3003/users/" + id);
+    await axios.delete("users/" + id);
     loadUsers();
   }
 
