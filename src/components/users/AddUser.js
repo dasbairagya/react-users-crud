@@ -24,6 +24,7 @@ export const AddUser = () => {
     await axios.post("http://localhost:3003/users", user); //post user to the server
     history("/"); //redirect to home
   };
+  
 
   return (
     <div className="container">

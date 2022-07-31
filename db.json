@@ -5,6 +5,7 @@
       "name": "Ervin Howell",
       "username": "Antonette",
       "email": "Shanna@melissa.tv",
+      "password": "Antonette",
       "address": {
         "street": "Victor Plains",
         "suite": "Suite 879",
@@ -28,6 +29,7 @@
       "name": "Clementine Bauch",
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
+      "password": "Samantha",
       "address": {
         "street": "Douglas Extension",
         "suite": "Suite 847",
@@ -51,6 +53,7 @@
       "name": "Patricia Lebsack",
       "username": "Karianne",
       "email": "Julianne.OConner@kory.org",
+      "password": "Karianne",
       "address": {
         "street": "Hoeger Mall",
         "suite": "Apt. 692",
@@ -74,6 +77,7 @@
       "name": "Chelsey Dietrich",
       "username": "Kamren",
       "email": "Lucio_Hettinger@annie.ca",
+      "password": "Kamren",
       "address": {
         "street": "Skiles Walks",
         "suite": "Suite 351",
@@ -95,6 +99,7 @@
     {
       "name": "Gopal1",
       "username": "Dasbairagya",
+      "password": "Dasbairagya",
       "email": "das@gmail.com",
       "phone": "123654789",
       "website": "test.com",
@@ -104,6 +109,7 @@
       "name": "dafds",
       "username": "fadsfsdfadsf",
       "email": "sdfasdf@gmail.com",
+      "password": "Dasbairagya",
       "phone": "dfadsf",
       "website": "sdfadsffadss34241324",
       "id": 8
@@ -114,7 +120,8 @@
       "email": "test@gmail.com",
       "phone": "123654789",
       "website": "test@test.com",
-      "id": 9
+      "id": 9,
+      "password": "test"
     }
   ]
 }

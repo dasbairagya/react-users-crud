@@ -1,6 +1,40 @@
-import React from 'react'
+import React , { useState } from 'react';
+import axios from 'axios'
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 const Login = () => {
+
+  let history = useNavigate();
+  const [authUser, setUser] = useState({
+    username: "",
+    password: ""
+  });
+  const {username, password } = authUser; //destractor  
+  const onInputChange = e => {
+    setUser({ ...authUser, [e.target.name]: e.target.value }); //to keep the state of the form use ...user to have the other fileds values
+  console.log(authUser);
+  };
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    
+    if(authUser.username.length < 1 || authUser.password.length < 1){
+      alert("Please fill all the fields");
+    }else{
+  
+      const allUser = await axios.get('http://localhost:3003/users', authUser);
+      const loginUser = allUser.data.find(user => user.username === authUser.username && user.password === authUser.password);
+
+      if(loginUser){
+        console.log('logged in');
+        history("/");
+      }else{
+        alert("Invalid username or password");
+      }
+    }
+
+  };
   return (
     <div className="container">
     <div
@@ -19,7 +53,7 @@ const Login = () => {
               top: "-10px"
             }}
           >
-            <a href="#">Forgot password?</a>
+            <a href="/register">Forgot password?</a>
           </div>
         </div>
         <div style={{ paddingTop: 30 }} className="card-body">
@@ -28,7 +62,7 @@ const Login = () => {
             id="login-alert"
             className="alert alert-danger col-sm-12"
           />
-          <form id="loginform" className="form-horizontal" role="form">
+          <form id="loginform" className="form-horizontal" onSubmit={e => onSubmit(e)}>
             <div style={{ marginBottom: 25 }} className="input-group">
               <span className="input-group-addon">
                 <i className="glyphicon glyphicon-user" />
@@ -39,7 +73,9 @@ const Login = () => {
                 className="form-control"
                 name="username"
                 defaultValue=""
-                placeholder="username or email"
+                placeholder="email"
+                value={username}
+                onChange={e => onInputChange(e)}
               />
             </div>
             <div style={{ marginBottom: 25 }} className="input-group">
@@ -52,6 +88,8 @@ const Login = () => {
                 className="form-control"
                 name="password"
                 placeholder="password"
+                value={password}
+                onChange={e => onInputChange(e)}
               />
             </div>
             <div className="input-group">
@@ -70,9 +108,9 @@ const Login = () => {
             <div style={{ marginTop: 10 }} className="form-group">
               {/* Button */}
               <div className="col-sm-12 controls">
-                <a id="btn-login" href="#" className="btn btn-success">
+                <button id="btn-login" className="btn btn-success">
                   Login
-                </a>
+                </button>
 
               </div>
             </div>
@@ -85,13 +123,8 @@ const Login = () => {
                     fontSize: "85%"
                   }}
                 >
-                  Don't have an account!
-                  <a
-                    href="#"
-                    onclick="$('#loginbox').hide(); $('#signupbox').show()"
-                  >
-                    Sign Up Here
-                  </a>
+                  Don't have an account! <span><NavLink className="nav-link" exact to="/register">Sign Up Here</NavLink></span>
+                  
                 </div>
               </div>
             </div>
@@ -117,17 +150,13 @@ const Login = () => {
               top: "-10px"
             }}
           >
-            <a
-              id="signinlink"
-              href="#"
-              onclick="$('#signupbox').hide(); $('#loginbox').show()"
-            >
+            <button>
               Sign In
-            </a>
+            </button>
           </div>
         </div>
         <div className="panel-body">
-          <form id="signupform" className="form-horizontal" role="form">
+          <form id="signupform" className="form-horizontal">
             <div
               id="signupalert"
               style={{ display: "none" }}

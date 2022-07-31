@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -82,8 +83,8 @@ const Register = () => {
                     fontSize: "85%"
                   }}
                 >
-                  Go to  
-                  <a href="#"> Login</a>
+                  <p> Go to  
+                  <span><NavLink className="nav-link" exact to="/login">Login</NavLink></span></p>
                 </div>
               </div>
             </div>
