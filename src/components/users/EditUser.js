@@ -20,7 +20,7 @@ export const EditUser = () => {
 
   useEffect(() => {
     loadUser();
-  }, []);
+  });
 
   const onSubmit = async e => {
     e.preventDefault();

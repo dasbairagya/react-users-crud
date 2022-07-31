@@ -1,14 +1,21 @@
 import React , { useState } from 'react';
+// import bcrypt from 'bcryptjs';
 // import axios from 'axios'
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from '../../api/axios';
-import LoginForm from '../layout/templates/LoginForm';
 
 const LOGIN_URL = '/users';
+
+// SALT should be created ONE TIME upon sign up
+// const salt = bcrypt.genSaltSync(10)
+// example =>  $2a$10$CwTycUXWue0Thq9StjUM0u => to be added always to the password hash
 
 const Login = () => {
 
   let history = useNavigate();
+  const [auth, setAuth] = useState({
+    token: ''
+  });
   const [authUser, setauthUser] = useState({
     username: "",
     password: ""
@@ -19,19 +26,29 @@ const Login = () => {
   console.log(authUser);
   };
 
-  const handleSubmit = async e => {
+  const handleLogin = async e => {
     e.preventDefault();
-
+    
     if(authUser.username.length < 1 || authUser.password.length < 1){
       alert("Please fill all the fields");
     }else{
   
       const allUser = await axios.get(LOGIN_URL); //get all users from the server i.e. http://localhost:3003/users
       const loginUser = allUser.data.find(user => user.username === authUser.username && user.password === authUser.password);
-
+      
+      // const hashedPassword = bcrypt.hashSync(loginUser.password, '$2a$11$CwTycUXWue0Thq9StjUM0u') // hash created previously created upon sign up
+      // console.log(hashedPassword);
+      
       if(loginUser){
         console.log('logged in');
+        const today = Date.now();
         localStorage.setItem('user', JSON.stringify(loginUser));
+        const newItem = {
+          token: today
+      };
+      setAuth([newItem]);
+        console.log(auth);
+        localStorage.setItem('auth', JSON.stringify(auth));
         history("/");
       }else{
         alert("Invalid username or password");
@@ -70,7 +87,7 @@ const Login = () => {
           <form
             id="loginform"
             className="form-horizontal"
-            onSubmit={(e) => handleSubmit(e)}
+            onSubmit={(e) => handleLogin(e)}
           >
             <div style={{ marginBottom: 25 }} className="input-group">
               <span className="input-group-addon">

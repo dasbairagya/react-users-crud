@@ -27,7 +27,7 @@ const getLocalData = () => {
 const [item, setItem] = useState(''); //play with current data
 // const [items, setItems] = useState([]); //without localstorage data
 const [items, setItems] = useState(getLocalData()); //get the localstoragge data
-const [isCheckedItem, setIsCheckedItem] = useState(false);
+// const [isCheckedItem, setIsCheckedItem] = useState(false);
 const [isSetItemId, setIsSetItemId] = useState('');
 const [toggleEdit, setToggleEdit] = useState(false);
 
@@ -121,7 +121,7 @@ const saveItems = () => {
 useEffect(()=>{
     saveItems();
     // console.log(isCheckedItem);
-}, [items]) //useEffect fires on items change here
+}) //useEffect fires on items change here
 
 
 

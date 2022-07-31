@@ -115,13 +115,13 @@
       "id": 8
     },
     {
-      "name": "Test1",
+      "name": "test",
       "username": "test",
       "email": "test@gmail.com",
-      "phone": "123654789",
-      "website": "test@test.com",
-      "id": 9,
-      "password": "test"
+      "phone": "234234324",
+      "website": "test.com",
+      "password": "test",
+      "id": 9
     }
   ],
   "doctors": [

@@ -26,7 +26,7 @@ const Register = () => {
             </div>
             </div>
             <div style={{ paddingTop: 30 }} className="card-body">
-            <form id="loginform" className="form-horizontal" role="form">
+            <form id="loginform" className="form-horizontal">
             <div style={{ marginBottom: 25 }} className="input-group">
               <span className="input-group-addon">
                 <i className="glyphicon glyphicon-user" />
@@ -68,7 +68,7 @@ const Register = () => {
             <div style={{ marginTop: 10 }} className="form-group">
               {/* Button */}
               <div className="col-sm-12 controls">
-                <a id="btn-login" href="#" className="btn btn-success">
+                <a id="btn-login" href="/register" className="btn btn-success">
                   Register
                 </a>
 

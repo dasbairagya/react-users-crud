@@ -11,10 +11,11 @@ export const AddUser = () => {
       username: "",
       email: "",  
       phone: "",
-      website: ""
+      website: "",
+      password: ""
     });
   
-    const { name, username, email, phone, website } = user; //destractor  
+    const { name, username, email, phone, website, password } = user; //destractor  
     const onInputChange = e => {
       setUser({ ...user, [e.target.name]: e.target.value }); //to keep the state of the form use ...user to have the other fileds values
     };
@@ -24,7 +25,7 @@ export const AddUser = () => {
     await axios.post("http://localhost:3003/users", user); //post user to the server
     history("/"); //redirect to home
   };
-  
+
 
   return (
     <div className="container">
@@ -83,6 +84,18 @@ export const AddUser = () => {
               placeholder="Enter Your Website Name"
               name="website"
               value={website}
+              onChange={e => onInputChange(e)}
+            />
+          </div>
+
+          <div className="form-group">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Password</label>
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="password"
+              name="password"
+              value={password}
               onChange={e => onInputChange(e)}
             />
           </div>
