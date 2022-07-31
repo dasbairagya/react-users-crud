@@ -2,6 +2,8 @@ import React , { useState } from 'react';
 // import axios from 'axios'
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from '../../api/axios';
+import LoginForm from '../layout/templates/LoginForm';
+
 const LOGIN_URL = '/users';
 
 const Login = () => {
@@ -17,7 +19,7 @@ const Login = () => {
   console.log(authUser);
   };
 
-  const onSubmit = async e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if(authUser.username.length < 1 || authUser.password.length < 1){
@@ -37,6 +39,7 @@ const Login = () => {
     }
 
   };
+
   return (
     <div className="container">
     <div
@@ -52,7 +55,7 @@ const Login = () => {
               float: "right",
               fontSize: "80%",
               position: "relative",
-              top: "-10px"
+              top: "-10px",
             }}
           >
             <a href="/register">Forgot password?</a>
@@ -64,7 +67,11 @@ const Login = () => {
             id="login-alert"
             className="alert alert-danger col-sm-12"
           />
-          <form id="loginform" className="form-horizontal" onSubmit={e => onSubmit(e)}>
+          <form
+            id="loginform"
+            className="form-horizontal"
+            onSubmit={(e) => handleSubmit(e)}
+          >
             <div style={{ marginBottom: 25 }} className="input-group">
               <span className="input-group-addon">
                 <i className="glyphicon glyphicon-user" />
@@ -76,7 +83,7 @@ const Login = () => {
                 name="username"
                 placeholder="email"
                 value={username}
-                onChange={e => onInputChange(e)}
+                onChange={(e) => onInputChange(e)}
               />
             </div>
             <div style={{ marginBottom: 25 }} className="input-group">
@@ -90,7 +97,7 @@ const Login = () => {
                 name="password"
                 placeholder="password"
                 value={password}
-                onChange={e => onInputChange(e)}
+                onChange={(e) => onInputChange(e)}
               />
             </div>
             <div className="input-group">
@@ -112,7 +119,6 @@ const Login = () => {
                 <button id="btn-login" className="btn btn-success">
                   Login
                 </button>
-
               </div>
             </div>
             <div className="form-group" style={{ marginTop: 10 }}>
@@ -121,11 +127,15 @@ const Login = () => {
                   style={{
                     borderTop: "1px solid#888",
                     paddingTop: 15,
-                    fontSize: "85%"
+                    fontSize: "85%",
                   }}
                 >
-                  Don't have an account! <span><NavLink className="nav-link" exact to="/register">Sign Up Here</NavLink></span>
-                  
+                  Don't have an account!{" "}
+                  <span>
+                    <NavLink className="nav-link" exact to="/register">
+                      Sign Up Here
+                    </NavLink>
+                  </span>
                 </div>
               </div>
             </div>
@@ -133,7 +143,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-
 
     <div
       id="signupbox"
@@ -148,12 +157,10 @@ const Login = () => {
               float: "right",
               fontSize: "85%",
               position: "relative",
-              top: "-10px"
+              top: "-10px",
             }}
           >
-            <button>
-              Sign In
-            </button>
+            <button>Sign In</button>
           </div>
         </div>
         <div className="panel-body">
@@ -234,7 +241,11 @@ const Login = () => {
             <div className="form-group">
               {/* Button */}
               <div className="col-md-offset-3 col-md-9">
-                <button id="btn-signup" type="button" className="btn btn-info">
+                <button
+                  id="btn-signup"
+                  type="button"
+                  className="btn btn-info"
+                >
                   <i className="icon-hand-right" /> &nbsp; Sign Up
                 </button>
                 <span style={{ marginLeft: 8 }}>or</span>
@@ -250,7 +261,8 @@ const Login = () => {
                   type="button"
                   className="btn btn-primary"
                 >
-                  <i className="icon-facebook" /> &nbsp; Sign Up with Facebook
+                  <i className="icon-facebook" /> &nbsp; Sign Up with
+                  Facebook
                 </button>
               </div>
             </div>
@@ -259,7 +271,6 @@ const Login = () => {
       </div>
     </div>
   </div>
-  
   )
 }
 export default Login;

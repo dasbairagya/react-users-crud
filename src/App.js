@@ -1,8 +1,8 @@
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router } from "react-router-dom";
-import Navbar from './components/layout/Navbar';
-import Controller from './components/layout/Controller';
+import Navbar from './components/layout/header/Navbar';
+import Routes from './components/routes/RouteController';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Router> 
         <div className="App"> 
           <Navbar />
-          <Controller />
+          <Routes />
         </div> 
       </Router>
   );

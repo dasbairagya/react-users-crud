@@ -77,4 +77,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
+### Hot Keywords
+```
+rcc -> class component skeleton
+
+rsc -> stateless component skeleton
+
+rsf -> stateless named function skeleton
+
+rfc -> function component skeleton
+
+rnfes- named function expression skeleton
+
+```
+
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

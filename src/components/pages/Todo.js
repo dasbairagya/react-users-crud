@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 // import 'react-toastify/dist/ReactToastify.css';
 
 
-const List = () => {
+const Todo = () => {
 
 //get local storage data
 const getLocalData = () => {
@@ -136,7 +136,7 @@ useEffect(()=>{
                     <div className="card px-3 shadow ">
                         {/* <figure><img src="../../../public/todo.jpg"/></figure> */}
                         <div className="card-body">
-                            <h4 className="card-title">📝Awesome Todo list📝</h4>
+                            <h4 className="card-title">📝 localStorage: Awesome Todo list</h4>
                             <form >
                             <div className="add-items d-flex"> 
                             <input type="text" name="items" value={item} className="form-control todo-list-input" placeholder="✍️What do you need to do today?" onChange={(e)=>setItem(e.target.value)}/> 
@@ -179,4 +179,4 @@ useEffect(()=>{
   )
 };
 
-export default List;
+export default Todo;
