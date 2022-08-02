@@ -2,7 +2,7 @@ import React , { useState } from 'react';
 // import bcrypt from 'bcryptjs';
 // import axios from 'axios'
 import { NavLink, useNavigate } from "react-router-dom";
-import axios from '../../api/axios';
+import api from '../../api/axios';
 
 const LOGIN_URL = '/users';
 
@@ -13,44 +13,42 @@ const LOGIN_URL = '/users';
 const Login = () => {
 
   let history = useNavigate();
-  const [auth, setAuth] = useState({
-    token: ''
-  });
+  const [token, setToken] = useState(false);
   const [authUser, setauthUser] = useState({
     username: "",
     password: ""
   });
   const {username, password } = authUser; //destractor  
+  
   const onInputChange = e => {
     setauthUser({ ...authUser, [e.target.name]: e.target.value }); //to keep the state of the form use ...user to have the other fileds values
-  console.log(authUser);
   };
+
+  const saveToken = () => {
+    setToken(true);
+    localStorage.setItem('auth', JSON.stringify({'token': token})); //array to string
+    console.log(token);
+  }
 
   const handleLogin = async e => {
     e.preventDefault();
-    
+    console.log(token);
     if(authUser.username.length < 1 || authUser.password.length < 1){
       alert("Please fill all the fields");
     }else{
   
-      const allUser = await axios.get(LOGIN_URL); //get all users from the server i.e. http://localhost:3003/users
+      const allUser = await api.get(LOGIN_URL); //get all users from the server i.e. http://localhost:3003/users
       const loginUser = allUser.data.find(user => user.username === authUser.username && user.password === authUser.password);
       
       // const hashedPassword = bcrypt.hashSync(loginUser.password, '$2a$11$CwTycUXWue0Thq9StjUM0u') // hash created previously created upon sign up
       // console.log(hashedPassword);
       
-      if(loginUser){
+      if (loginUser) {
         console.log('logged in');
-        const today = Date.now();
         localStorage.setItem('user', JSON.stringify(loginUser));
-        const newItem = {
-          token: today
-      };
-      setAuth([newItem]);
-        console.log(auth);
-        localStorage.setItem('auth', JSON.stringify(auth));
+        saveToken()
         history("/");
-      }else{
+      } else {
         alert("Invalid username or password");
       }
     }

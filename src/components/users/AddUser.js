@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios'
+// import axios from 'axios'
+import api from '../../api/axios'
 import { useNavigate } from "react-router-dom";
 
 
@@ -22,7 +23,7 @@ export const AddUser = () => {
   
   const onSubmit = async e => {
     e.preventDefault();
-    await axios.post("http://localhost:3003/users", user); //post user to the server
+    await api.post("/users", user); //post user to the server
     history("/"); //redirect to home
   };
 

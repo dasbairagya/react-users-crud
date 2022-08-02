@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from '../../api/axios';
 import { useNavigate, useParams } from "react-router-dom";
 
 export const EditUser = () => {
@@ -24,13 +25,13 @@ export const EditUser = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    await axios.put('http://localhost:3003/users/'+id, user);
+    await api.put('/users/'+id, user);
     history("/");
   };
 
   const loadUser = async () => {
-    const result = await axios.get('http://localhost:3003/users/'+id);
-    setUser(result.data);
+    const response = await api.get('/users/'+id);
+    setUser(response.data);
   };
   return (
     <div className="container">
