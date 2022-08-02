@@ -87,7 +87,7 @@ rsf -> stateless named function skeleton
 
 rfc -> function component skeleton
 
-rnfes- named function expression skeleton
+rnfes -> named function expression skeleton
 
 ```
 
