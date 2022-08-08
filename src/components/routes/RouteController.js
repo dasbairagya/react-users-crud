@@ -10,10 +10,12 @@ import { EditUser } from '../users/EditUser';
 import  Users  from '../users/Users';
 import Nopage from '../pages/Nopage';
 import Login from '../pages/Login';
+import Logout from '../pages/Logout';
 import Register from '../pages/Register';
 import PrivateRoutes from './PrivateRoutes';
 
 const RouteController = () => {
+
   return (
     <Routes>
       <Route element={<PrivateRoutes />}>
@@ -22,6 +24,7 @@ const RouteController = () => {
         <Route exact path="/users/add" element={<AddUser />} />
         <Route exact path="/users/edit/:id" element={<EditUser />} />
         <Route exact path="/users/:id" element={<Users />} />
+        <Route exact path="/logout" element={<Logout />} />
       </Route>
       
       <Route exact path='/blog' element={<Blog />} />

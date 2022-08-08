@@ -60,7 +60,7 @@ const Register = () => {
                     type="checkbox"
                     name="remember"
                     defaultValue={1}
-                  />{" "}
+                  />
                   Remember me
                 </label>
               </div>
@@ -68,9 +68,9 @@ const Register = () => {
             <div style={{ marginTop: 10 }} className="form-group">
               {/* Button */}
               <div className="col-sm-12 controls">
-                <a id="btn-login" href="/register" className="btn btn-success">
+                {/* <a id="btn-login" href="/register" className="btn btn-success">
                   Register
-                </a>
+                </a> */}
 
               </div>
             </div>

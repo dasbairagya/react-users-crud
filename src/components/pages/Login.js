@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React , {useEffect, useState } from 'react';
 // import bcrypt from 'bcryptjs';
 // import axios from 'axios'
 import { NavLink, useNavigate } from "react-router-dom";
@@ -13,7 +13,19 @@ const LOGIN_URL = '/users';
 const Login = () => {
 
   let history = useNavigate();
-  const [token, setToken] = useState(false);
+
+  //get local storage data
+  const getLocalData = () => {
+    const data = localStorage.getItem('auth');
+    if(data){
+        return JSON.parse(data); //string to array
+    }else{
+        return [];
+    }
+  }
+
+
+  const [auth, setAuth] = useState(getLocalData());
   const [authUser, setauthUser] = useState({
     username: "",
     password: ""
@@ -24,15 +36,21 @@ const Login = () => {
     setauthUser({ ...authUser, [e.target.name]: e.target.value }); //to keep the state of the form use ...user to have the other fileds values
   };
 
+
   const saveToken = () => {
-    setToken(true);
-    localStorage.setItem('auth', JSON.stringify({'token': token})); //array to string
-    console.log(token);
+    localStorage.setItem('auth', JSON.stringify(auth)); //array to string
   }
+
+  //save to the local storage wherever te items are changed
+  useEffect(()=>{
+    console.log('from login');
+    saveToken();
+    // console.log(isCheckedItem);
+  },[auth]) //useEffect fires on auth change here
+
 
   const handleLogin = async e => {
     e.preventDefault();
-    console.log(token);
     if(authUser.username.length < 1 || authUser.password.length < 1){
       alert("Please fill all the fields");
     }else{
@@ -46,8 +64,13 @@ const Login = () => {
       if (loginUser) {
         console.log('logged in');
         localStorage.setItem('user', JSON.stringify(loginUser));
-        saveToken()
-        history("/");
+        const newAuth = {
+          token: true
+      };
+
+      setAuth(newAuth);
+      window.location.href = "/";
+      // history("/");
       } else {
         alert("Invalid username or password");
       }
@@ -73,7 +96,7 @@ const Login = () => {
               top: "-10px",
             }}
           >
-            <a href="/register">Forgot password?</a>
+            {/* <a href="/register">Forgot password?</a> */}
           </div>
         </div>
         <div style={{ paddingTop: 30 }} className="card-body">
@@ -129,7 +152,6 @@ const Login = () => {
               </div>
             </div>
             <div style={{ marginTop: 10 }} className="form-group">
-              {/* Button */}
               <div className="col-sm-12 controls">
                 <button id="btn-login" className="btn btn-success">
                   Login
@@ -147,7 +169,7 @@ const Login = () => {
                 >
                   Don't have an account!{" "}
                   <span>
-                    <NavLink className="nav-link" exact to="/register">
+                    <NavLink className="nav-link" exact="true" to="/register">
                       Sign Up Here
                     </NavLink>
                   </span>
