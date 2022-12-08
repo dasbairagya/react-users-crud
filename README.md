@@ -2,8 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
-![](public/home.jpg)
+![home](https://user-images.githubusercontent.com/18226897/206447977-602cbc96-d162-40a4-aa58-da8180fdb9b0.jpg)
 
 
 ## Available Scripts
